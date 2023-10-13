@@ -1,4 +1,8 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
+
+
+// console.log(gsap)
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -30,19 +34,22 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.width, sizes.height)
 
 // Clock
+// const clock = new THREE.Clock()
 
-const clock = new THREE.Clock()
+// Greensock has its own tick, all by its own in the library. Still need to run results by yourself, render line in the tick function and calling tick!
+gsap.to(mesh.position, {duration: 1, delay:1, x:2})
+gsap.to(mesh.position, {duration: 1, delay:2, x:0})
 
 // Animations
 const tick = () => {
 
     //Clock
-    const elapsedTime = clock.getElapsedTime()
+    // const elapsedTime = clock.getElapsedTime()
 
-    // Update Objects
-    camera.position.y = Math.sin(elapsedTime) 
-    camera.position.x = Math.cos(elapsedTime) 
-    camera.lookAt(mesh.position)
+    // // Update Objects
+    // camera.position.y = Math.sin(elapsedTime) 
+    // camera.position.x = Math.cos(elapsedTime) 
+    // camera.lookAt(mesh.position)
 
     // Render
     renderer.render(scene, camera)
